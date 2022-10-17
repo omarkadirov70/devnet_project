@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+#form1{
+    height: 130px;
+    width: 730px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 30%;
+    left: 60%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);}
+
+    #form2{
+    height: 130px;
+    width: 730px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 60%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);}
+
+.BLOCK2{
+    height: 640px;
+    width: 300px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    right: 55%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 20px 35px;
+}
+
+.BLOCK2 p{
+    color: white;
+    font-size: 20px;
+}
+
+.BLOCK2 h3{
+    color: rgb(127, 219, 255);
+}
+
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 10px 5px 0;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 40%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+.button{
+    width: 25%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover{
+  background-color: rgba(240, 193, 193, 0.47);
+}
+
+.p{
+    color: #e5e5e5;
+}
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo"><a href="#">Cisco</a></h1>
+          <ul class="main-nav">
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('send') }}">Send</a></li>
+              <li><a href="{{ url_for('upload') }}">Upload</a></li>
+              <li><a href="{{ url_for('execute') }}">Execute</a></li>
+          </ul>
+      </header> 
+  <main>
+    <div class="BLOCK">
+
+      <!-- <div class="video-box">
+          <video class="video" src="static/uploads/loop.mp4" autoplay muted loop></video>
+      </div> -->
+
+        <form id="form1" class="form-inline" action="/execute" method="post">
+            <input type="text" name="file" value="" placeholder="filename">
+            <input class="button" type="submit" value="Execute" >
+        </form>
+
+        <form id="form2" class="form-inline" action="/execute" method="post">
+            <input type="text" name="file" value="" placeholder="filename">
+            <input class="button" type="submit" value="Execute" >
+        </form>
+    </div>
+
+    <div class="BLOCK2">
+        <h3>Uploaded files:</h3>
+        {% for item in dir_list %}
+        <p>{{ item }}</p>
+        {% endfor %}
+    </div>
+
+  </main>
+</body>
+
+</html>
