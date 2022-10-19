@@ -1,0 +1,12 @@
+en
+conf t
+line con 0
+logging synchronous
+exec-timeout 0 0
+no ip domain lookup
+
+do write
+
+
+
+route ADD 10.0.0.0 MASK 255.255.255.0 192.168.126.140

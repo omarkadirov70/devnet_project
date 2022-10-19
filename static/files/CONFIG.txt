@@ -1,0 +1,38 @@
+line con 0
+logging synchronous
+exec-timeout 0 0
+no ip domain lookup
+hostname
+
+
+hostname R1
+ip domain-name NETWORKLESSONS.LOCAL
+crypto key generate rsa 
+
+enable secret test
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+username test privilege 15 password test
+
+int fa0/0
+ip add 192.168.1.2 255.255.255.0
+no shut
+int loopback 100
+ip add 10.0.0.15 255.255.255.0
+exit
+
+int fa0/0
+ip add 192.168.1.3 255.255.255.0
+no shut
+int loopback 100
+ip add 10.0.0.25 255.255.255.0
+exit
+
+int fa0/0
+ip add 192.168.1.4 255.255.255.0
+no shut
+int loopback 100
+ip add 10.0.0.35 255.255.255.0
+exit
